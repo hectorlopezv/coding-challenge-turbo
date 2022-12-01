@@ -5,6 +5,11 @@ module.exports = {
     appDir: true,
   },
   images: {
-    domains: ["www.google.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };

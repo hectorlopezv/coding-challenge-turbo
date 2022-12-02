@@ -1,0 +1,12 @@
+#!/bin/bash
+docker-compose up -d
+pnpm install
+wait
+cd apps/backend
+npm run seed:run
+wait
+cd ..
+cd ..
+pnpm run dev --filter backend
+wait
+pnpm run dev --filter backend

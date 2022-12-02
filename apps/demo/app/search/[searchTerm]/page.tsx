@@ -467,7 +467,7 @@ export default async function SearchResults({
                         />
                       )}
                   </a>
-                  <p className="text-[#0d6efd] underline">{item.displayLink}</p>
+                  <p className="text-[#0d6efd] underline">{item.link}</p>
                 </div>
 
                 <a className="mt-1" href={item.link}>

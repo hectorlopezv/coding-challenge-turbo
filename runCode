@@ -1,12 +1,14 @@
 #!/bin/bash
 docker-compose up -d
+sleep 10
 pnpm install
-wait
+sleep 30
 cd apps/backend
 npm run seed:run
-wait
+sleep 20
 cd ..
 cd ..
-pnpm run dev --filter backend
-wait
-pnpm run dev --filter backend
+pnpm run dev --filter backend &
+sleep 10
+pnpm run dev --filter demo &
+echo "Ready to Test"

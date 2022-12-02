@@ -1,8 +1,9 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { FindOnePostDto } from 'src/dto/find-one-post.dto';
 import { SearchPostDto } from 'src/dto/search-post.dto';
 import { FindManyOptions, ILike, Repository } from 'typeorm';
-import { PostCreateDTO } from '../dto/create-post.input';
+import { PostCreateDTO } from '../dto/create-post.dto';
 import Post from '../entities/post.entity';
 
 @Injectable()
@@ -20,6 +21,15 @@ export class PostService {
     const newPost = await this.postReposistory.create(post);
     const postData = await this.postReposistory.save(newPost);
     return postData;
+  }
+  async findOne(findOnePostDto: FindOnePostDto) {
+    const { title } = findOnePostDto;
+    console.log('title', title);
+    const post = await this.postReposistory.findOneBy({
+      title,
+    });
+    console.log('post', post);
+    return post;
   }
   async searchPosts(searchPost: SearchPostDto) {
     const pagination = {

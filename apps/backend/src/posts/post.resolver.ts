@@ -1,7 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { FindOnePostDto } from 'src/dto/find-one-post.dto';
 import { SearchPostDto } from 'src/dto/search-post.dto';
 import { SearchResponseDto } from 'src/dto/search-response.dto';
-import { PostCreateDTO } from '../dto/create-post.input';
+import { PostCreateDTO } from '../dto/create-post.dto';
 
 import Post from '../entities/post.entity';
 import { PostService } from './post.service';
@@ -23,6 +24,10 @@ export class PostResolver {
   @Query(() => SearchResponseDto, { name: 'searchPosts' })
   search(@Args('searchPost') searchPost: SearchPostDto) {
     return this.postService.search(searchPost);
+  }
+  @Query(() => Post, { name: 'findOnePost' })
+  findOnePost(@Args('findOnePost') findOnePost: FindOnePostDto) {
+    return this.postService.findOne(findOnePost);
   }
 }
 // {

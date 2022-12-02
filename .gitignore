@@ -18,7 +18,7 @@ build
 *.pem
 /apps/backend/node_modules
 /apps/backend/dist
-/pgdata
+pgdata
 /apps/backend/pgdata
 # debug
 npm-debug.log*
